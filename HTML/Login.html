@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title> Bird Strike Game </title>
+        <link rel="stylesheet" href="../CSS/Login.css">     <!-- Linking the Login css file -->
+        <link rel="stylesheet" href="../CSS/Menubar.css">   <!-- Linking the menubar css file -->
+        <script src="../JS/Login.js"></script>
+    </head>
+
+    <body>
+        <!-- Code for the image logo -->
+        <div id="imageLogo">
+            <img src="../Images/Logo.jpg" width="70" height="70" >
+            <div id="Gamename">Bird Strike</div>
+        </div>
+
+
+        <!-- Code for the navigation bar.   -->
+        <div id="navigation">
+
+            <span id = "menuitem"><a href="../HTML/Homepage.html"> Home</a></span>
+            <span id = "menuitem"><a href="../HTML/Play.html"> Play</a></span>
+            <span id = "menuitem"><a href="../HTML/Leaderboard.html"> Leaderboard</a></span> 
+            <span id = "menuitem"><a href="../HTML/Login.html">Login</a></span>
+            <span id = "menuitem"><a href="../HTML/Register.html">Register</a></span> 
+            <span id = "menuitem"><a href="#" onclick="logout()">Logout</a></span>  
+
+        </div>
+
+            <div id="Loginpage"> 
+                <div class="main_div">
+                    <div class="title">Login Form</div>
+                    <!-- <form action="../HTML/Play.html">  -->
+                        <form id="Signin" onsubmit="return isRegistered();" action="../HTML/Play.html">
+                            <div class="input_box">
+                                <input type="text" name="myUsername" placeholder="Username" required>
+                            </div>
+                            <div class="input_box">
+                                <input type="password" name="myPassword" placeholder="Password" required>
+                            </div>
+                                <p id = "feedback"></p>
+                            <div class="input_box button">
+                                <input type="submit" value="Login">
+                            </div>
+                        </form>
+                        
+            
+
+                <!-- A section for signing up -->
+                <div class="sign_up">
+                    Not a member? <a href="../HTML/Register.html">Register now</a>    <!-- A link to the "Register.html" page -->
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function logout() {
+                // Clears user session or local storage
+                sessionStorage.removeItem("loggedinuser");
+                // Redirect to the login page (optional)
+                window.location.href = "../HTML/Login.html";
+            }
+        </script>
+
+        <!-- Code for footer -->
+        <div id="footer">
+            <p style="color:pink;font-size:8pt"> By Elias Paul (M00913057) </p>
+
+        </div>
+
+    </body>
+</html>

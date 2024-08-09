@@ -1,0 +1,48 @@
+/* Styling for the section with the ID "Leaderboardpage" */
+#Leaderboardpage{
+    background-color: rgb(230, 230, 191);
+    height: 100%;
+
+}
+
+/* Styling for the heading with the class "leaderboard-heading" */
+.leaderboard-heading {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 5%;
+  text-decoration: underline; /* Underline the text within this element */
+}
+
+
+/* Styling for the footer section */
+#footer {
+    text-align: center;
+    background-color: #333;
+    color: pink;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Styling for the table element */
+table {
+    font-family: arial, sans-serif;  /* Define the font family for the table text */
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
+  }
+
+/* Styling for table cells (td) and table headers (th) */
+  td, th {
+    border: 1px solid #dddddd;  /* Add a 1px solid border to cells and headers */
+    text-align: left;
+    padding: 8px;   /* Add padding to cells and headers */
+  }
+  
+/* Styling for even rows of the table */
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }

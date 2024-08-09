@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;      /* Use a flexbox layout */
+    flex-direction: column;     /* Stack child elements vertically */
+}
+
+/* Styling for the logo and centering it */
+#imageLogo {
+    text-align: center;
+}
+
+/* Adjusting the size of the logo image */
+#imageLogo img {
+    width: 70px;
+    height: 70px;
+}
+
+/* Styling for the game name */
+#Gamename {
+    font-size: 20px;
+}
+
+/* Styling for the navigation bar */
+#navigation {
+    text-align: center;
+    background-color: #ccc;
+    padding: 10px 0;    
+}
+
+/* Styling for menu items */
+#menuitem {
+    display: inline-block;
+    margin: 10px;
+    
+}
+
+/* Styling for the hover effect on links */
+a:hover {
+    background-color: rgb(242, 211, 173);
+  }
+
+/* Additional styling for menu items */
+#menuitem{
+    background-color: beige;
+    width: 180;
+    font-size: 15pt;
+    color: black;
+    display: inline-block;  /* Display the menu items as inline blocks */
+    margin-left: 1%;
+    margin-top: 2%;
+}

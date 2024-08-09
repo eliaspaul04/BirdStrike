@@ -1,0 +1,83 @@
+<html>
+
+    <head>
+        <title>Bird Strike Game</title>
+        <link rel="stylesheet" href="../CSS/Leaderboard.css"> <!-- Linking the Leaderboard css file -->
+        <link rel="stylesheet" href="../CSS/Menubar.css">      <!-- Linking the menubar css file -->
+    </head>
+
+
+    <body>
+
+        <!-- Code for image logo -->
+        <div id="imageLogo">
+            <img src="../Images/Logo.jpg" width="70" height="70">
+            <div id="Gamename">Bird Strike</div>
+        </div>
+
+        <!-- Code for the navigation bar -->
+        <div id="navigation">
+            <span id="menuitem"><a href="../HTML/Homepage.html"> Home</a></span>
+            <span id="menuitem"><a href="../HTML/Play.html"> Play</a></span>
+            <span id="menuitem"><a href="../HTML/Leaderboard.html"> Leaderboard</a></span>
+            <span id="menuitem"><a href="../HTML/Login.html">Login</a></span>
+            <span id="menuitem"><a href="../HTML/Register.html">Register</a></span>
+            <span id="menuitem"><a href="#" onclick="logout()">Logout</a></span>
+        </div>
+
+        <div id="Leaderboardpage">
+
+            <!-- The heading for the leaderboard section -->
+            <h1 class="leaderboard-heading">Leaderboard</h1>
+
+            <!-- A table for displaying leaderboard data -->
+            <table id="leaderboard-table">
+                <tr>
+                    <th>Username</th>
+                    <th>Score</th>
+                    <th>Position</th>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- comment for footer -->
+        <div id="footer">
+            <p style="color:pink;font-size:8pt"> By Elias Paul (M00913057) </p>
+        </div>
+
+        <script>
+            // Retrieve user data from local storage
+            const theUsers = JSON.parse(localStorage.getItem('theUsers')) || [];
+
+            // Sort theUsers array based on the score in descending order
+            theUsers.sort((a, b) => b.score - a.score);
+
+            // Selects the table to populate
+            const leaderboardTable = document.getElementById('leaderboard-table');
+
+            // Display only the top 3 scores
+            const top3Users = theUsers.slice(0, 3);
+
+            // Populate the table with the top 3 scores
+            top3Users.forEach((user, index) => {
+                const row = leaderboardTable.insertRow(-1);
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                const cell3 = row.insertCell(2);
+
+                cell1.innerHTML = user.theUsername;
+                cell2.innerHTML = user.score;
+                cell3.innerHTML = index + 1; 
+            });
+
+            function logout() {
+                // Clear user session or local storage
+                sessionStorage.removeItem("loggedinuser");
+                // Redirect to the login page 
+                window.location.href = "../HTML/Login.html";
+            }
+        </script>
+
+    </body>
+</html>

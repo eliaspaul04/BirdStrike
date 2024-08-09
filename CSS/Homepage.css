@@ -1,0 +1,66 @@
+/* Styling the main content section */
+.Maincontent {
+    flex: 1;
+    text-align: center;
+    
+}
+
+/* Styling images within the main content */
+.Maincontent img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Styling the footer */
+#footer {
+    text-align: center;
+    background-color: #333;
+    color: pink;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Styling the main content container */
+#Maincontent {
+    text-align: center;
+    position: relative;
+}
+
+/* Styling the game description */  
+.gameDescription {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Center-align this element both horizontally and vertically */
+    background-color: rgba(0, 0, 0, 0.6); 
+    color: white; 
+    padding: 10px;
+    list-style-type: disc;  /* Use bullet points */
+    padding-left: 20px;
+}
+
+/* Styling the h1 element within .gameDescription */
+.gameDescription h1 {
+    font-size: 24px;
+    text-decoration: underline;  /* Underline the text within the h1 element */
+    margin: 0;
+    text-align: center;     /* Center-align the text within the h1 element */
+}   
+
+/* Styling images within #Maincontent */
+#Maincontent img {
+    width: 100%;
+    height: 100%;
+} 
+
+
+
+
+
+
+
+
+

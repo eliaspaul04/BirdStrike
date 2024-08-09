@@ -1,0 +1,68 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Code for the footer */
+#footer {
+    text-align: center;
+    background-color: #333;
+    color: pink;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    /* overflow: hidden; */
+    
+} */
+
+#container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #e6e6bf;
+} 
+
+
+
+canvas {
+    width: 90%; 
+    height: 65%; 
+    margin: auto;
+    display: block;
+    background: url('../Images/Game\ BG.jpg') no-repeat center center fixed;
+    background-size: cover;
+    
+}
+
+
+
+#levelButtons {
+    position: absolute;
+    top: 200px; /* Position the buttons at the vertical center of the container */
+    left: 50%; /* Position the buttons at the horizontal center of the container */
+    transform: translate(-50%, -70%); /* Center the buttons precisely */
+    display: flex;
+    align-items: center; /* Align buttons to the center horizontally */
+    
+}
+
+/* Styles for each button */
+button {
+    margin-bottom: 9px;
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: #e6e6bf;
+    margin: 0 10px;
+}
+
+
+

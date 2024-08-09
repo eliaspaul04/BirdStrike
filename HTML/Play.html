@@ -1,0 +1,293 @@
+<html>
+    <head>
+        <title>Bird Strike Game</title>
+        <link rel="stylesheet" href="../CSS/Play.css"> <!-- Linking the Play css file -->
+        <link rel="stylesheet" href="../CSS/Menubar.css"><!-- Linking the menubar css file -->
+         <!-- Linking the JavaScript files -->
+        <script src="../JS/Plane.js"></script>
+        <script src="../JS/Birds.js"></script>
+        <script src="../JS/Play.js"></script>
+    </head>
+
+    <body>
+ 
+        <div id="container"></div>
+
+        <!-- Code for the logo -->
+        <div id="imageLogo">
+            <img src="../Images/Logo.jpg" width="70" height="70">
+            <div id="Gamename">Bird Strike</div>
+        </div>
+
+        <!-- Code for the navigation bar -->
+        <div id="navigation">
+            <span id="menuitem"><a href="../HTML/Homepage.html"> Home</a></span>
+            <span id="menuitem"><a href="../HTML/Play.html"> Play</a></span>
+            <span id="menuitem"><a href="../HTML/Leaderboard.html"> Leaderboard</a></span>
+            <span id="menuitem"><a href="../HTML/Login.html">Login</a></span>
+            <span id="menuitem"><a href="../HTML/Register.html">Register</a></span>
+            <span id = "menuitem"><a href="#" onclick="logout()">Logout</a></span> 
+        </div>
+
+        <!-- Code for the footer -->
+        <div id="footer">
+            <p style="color:pink;font-size:8pt"> By Elias Paul (M00913057) </p>
+        </div>
+
+        <canvas id="MyCanvas" width="800" height="500" style="border: 1px solid black;"></canvas>
+
+        <!-- This is a container for the level selection buttons. -->
+        <div id="levelButtons">
+            <button id="level1" onclick="setLevel(1)">Level 1</button>
+            <button id="level2" onclick="setLevel(2)">Level 2</button>
+            <button id="level3" onclick="setLevel(3)">Level 3</button>
+        </div>
+
+
+        <!-- This is a container for displaying the current level.-->
+        <div id="level">Level: 1</div>
+
+        <script>
+
+
+            "use strict";
+
+            // Variables
+            let context;
+            let canvas;
+            let plane;
+            let birds = [];
+            let timer;
+            let bgImage = new Image();
+            let lives = 3;
+            let score = 0;
+            let time = 0;
+            let gameStarted = false;
+            let frameCount = 0;
+
+
+            let myGameScreen = {
+                canvas: document.getElementById("MyCanvas"),
+                // start is a method that sets up the canvas context and starts the game loop.
+                start: function () {
+                    this.context = this.canvas.getContext("2d");
+                    this.interval = setInterval(draw, 20); // Set the interval for the draw function
+                },
+                // clear is a method that clears the entire canvas.
+                clear: function () {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+            };
+
+            //function that checks if the user is logged in.
+            function isLoggedIn() {
+                const loggedInUser = sessionStorage.getItem("loggedinuser");
+                return loggedInUser !== null;
+            }
+
+            //function that redirects the user to the login page.
+            function redirectToLogin() {
+                alert("You need to log in to play the game.");
+                window.location.href = "../HTML/Login.html";
+            }
+
+
+            function checkOverlap(x, y) {
+                for (let i = 0; i < birds.length; i++) {
+                    if (x < birds[i].xPos + birds[i].width &&
+                        x + 30 > birds[i].xPos &&
+                        y < birds[i].yPos + birds[i].height &&
+                        y + 30 > birds[i].yPos) {
+                            return true; // Overlapping positions
+                    }
+                }
+                return false; // No overlap
+            }
+
+            // Function to update the score of the logged in user
+            function updateScore() {
+                // Get the logged in user from the session storage
+                const loggedInUser = sessionStorage.getItem("loggedinuser");
+                const theUsers = JSON.parse(localStorage.getItem('theUsers')) || [];
+                const userIndex = theUsers.findIndex(user => user.theUsername === loggedInUser);
+
+                if (userIndex !== -1) {
+                    // Checks if the new score is higher than the existing score
+                    if (score > theUsers[userIndex].score) {
+                        // Update the score of the user in the array
+                        theUsers[userIndex].score = score;
+                        localStorage.setItem('theUsers', JSON.stringify(theUsers));
+                        console.log(`Updated score for ${loggedInUser}. New score: ${score}`);
+                    } else {
+                        console.log(`Score for ${loggedInUser} is not higher. Previous score: ${theUsers[userIndex].score}`);
+                    }
+                }
+            }
+
+            window.onload = function () {
+                checkLoginStatus();
+                setupCanvas();
+                setupGameScreen();
+                setupEventListeners();
+            };
+
+            // Function to check if the user is logged in
+            function checkLoginStatus() {
+                // If the user is not logged in, redirect them to the login page
+                if (!isLoggedIn()) {
+                    redirectToLogin();
+                    return;
+                }
+            }
+
+            // Function to set up the game canvas
+            function setupCanvas() {
+                canvas = document.getElementById("MyCanvas");
+                context = canvas.getContext("2d");
+                bgImage.src = "../Images/Game BG.jpg";
+            }
+
+            function setupGameScreen() {
+                myGameScreen.start();
+            }
+
+            function setupEventListeners() {
+                window.addEventListener('keydown', handleKeyDown);
+                window.addEventListener('keyup', handleKeyUp);
+            }
+
+            // Function to handle the keydown event
+            function handleKeyDown(e) {
+                if (e.key === "Enter" && !gameStarted) {
+                    gameStarted = true;
+                    initializeGame();
+                }
+                    myGameScreen.key = e.keyCode;
+            }
+            // Function to handle the keyup event
+            function handleKeyUp(e) {
+                myGameScreen.key = false;
+                plane.speedY = 0; // Reset vertical speed when key is released
+            }
+
+            
+            
+            // Function to draw the game elements on the canvas
+            function draw() {
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+
+                if (!gameStarted) {
+                    // Display a message to start the game
+                    context.font = "bold 20px Arial";
+                    context.fillStyle = "Black";
+                    context.fillText("Press Enter to Start", 299, 250);
+                    return;
+                }
+
+                 // Decrease the time by 1
+                time--;
+                // Calculate the remaining seconds
+                const seconds = Math.floor(time / 50); 
+
+                if (time <= 0) {
+                    clearInterval(myGameScreen.interval);
+                    context.font = "bold 20px Arial";
+                    context.fillStyle = "green";
+                    context.fillText("GAME OVER! Time's up!", 270, 150);
+                    updateScore();
+
+                } else {                
+
+                    for (let i = 0; i < 7; i++) {
+                        birds[i].draw();
+                        
+                        // Check if the player has passed the bird
+                        if (plane.xPos > birds[i].xPos + birds[i].width && !birds[i].passed) {
+                            score += birds[i].scoreValue;
+                            birds[i].passed = true; // Mark the bird as passed
+                        }
+
+                        // Check if the player has passed the bird
+                        if (birds[i].passed && birds[i].xPos + birds[i].width < 0) {
+                            birds[i].xPos = canvas.width; // Set the bird's x position to the right edge of the canvas
+                            birds[i].passed = false; 
+                        }
+                
+                        // If the bird has been passed and is no longer visible on the canvas
+                        if (birds[i].hits(plane) && !birds[i].hasCollided) {
+                            birds[i].hasCollided = true;
+                            lives--;
+
+                            score -= birds[i].scoreValue;
+                            
+                            plane.xPos = 50;
+                            plane.yPos = 180;
+
+
+                            if (lives === 0) {
+                                // Game over if there are no lives left
+                                clearInterval(myGameScreen.interval);
+                                context.font = "bold 20px Arial";
+                                context.fillStyle = "red";
+                                context.fillText("GAME OVER!", 325, 150);
+                                updateScore();
+                                break;
+                            }
+            
+                        } 
+                                    
+                    }
+        
+                    // Define the minimum and maximum y position for the plane
+                    const minYPos = 50; 
+                    const maxYPos = 500;
+
+                    if (plane.yPos < minYPos) {
+                        plane.yPos = minYPos;
+                    }
+
+                    if (plane.yPos + plane.height > maxYPos) {
+                        plane.yPos = maxYPos - plane.height;
+                    }
+
+                    plane.draw();
+
+
+                }                
+
+
+                context.font = "14px Arial";
+                context.fillStyle = "black";
+                context.fillText("Score: " + score, 10, 20);
+                context.fillText("Time: " + seconds, 10, 40);
+                        
+
+
+                context.font = "bold 20px Arial";
+                context.fillStyle = "white";
+                context.fillText("Lives: " + lives, 350, 40);
+
+                if (myGameScreen.key && myGameScreen.key == 38) {
+                    plane.speedY = -2;
+                }
+                
+                if (myGameScreen.key && myGameScreen.key == 40) {
+                    plane.speedY = 2;
+                }
+
+            }
+
+
+            function logout() {
+                // Clear user session or local storage
+                sessionStorage.removeItem("loggedinuser");
+                // Redirect to the login page (optional)
+                window.location.href = "../HTML/Login.html";
+            }
+            
+        </script>
+
+    </body>
+</html>

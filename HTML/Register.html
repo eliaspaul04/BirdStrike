@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title> Bird Strike Game </title>
+        <link rel="stylesheet" href="../CSS/Register.css">     <!-- Linking the Register css file -->
+        <link rel="stylesheet" href="../CSS/Menubar.css">       <!-- Linking the menubar css file -->
+        <script src="../JS/Register.js"></script>
+    </head>
+
+    <body>
+
+        <!-- Code for the logo -->
+        
+        <div id="imageLogo">
+            <img src="../Images/Logo.jpg" width="70" height="70" >
+            <div id="Gamename">Bird Strike</div>
+          </div>
+
+        <!-- Code for navigation -->
+        
+        <div id="navigation">
+
+            <span id = "menuitem"><a href="../HTML/Homepage.html"> Home</a></span>
+            <span id = "menuitem"><a href="../HTML/Play.html"> Play</a></span>
+            <span id = "menuitem"><a href="../HTML/Leaderboard.html"> Leaderboard</a></span> 
+            <span id = "menuitem"><a href="../HTML/Login.html">Login</a></span>
+            <span id = "menuitem"><a href="../HTML/Register.html">Register</a></span>   
+
+        </div>
+
+
+        <div id="Registerpage">
+
+            <!-- A container for the main content of the registration form -->
+            <div class="main_div">
+
+                <!-- The title of the registration form -->
+                <div class="title">Register Form</div>
+
+                <!-- A form element for user registration, with an action attribute directing to the "Play.html" page -->
+                <form id="Register"  onsubmit="return register();">
+
+                    <!-- Input box for entering the name -->
+                    <div class="input_box">
+                         <input type="text" placeholder="Name" name="myname" required>
+                    </div>
+
+                    <!-- Input box for entering the email address -->
+                    <div class="input_box">
+                        <input type="email" placeholder="Email" name="myemail" required>
+                    </div>
+
+                    <!-- Input box for entering the username -->
+                    <div class="input_box">
+                         <input type="username" placeholder="Username" name="myusername" required>
+                    </div>
+
+                    <!-- Input box for entering the password -->
+                    <div class="input_box">
+                         <input type="password" placeholder="Password" name="mypassword" required>
+                    </div> 
+                    
+                    <p id="feedback" style="color: red;"></p>
+                    <!-- Input box for submitting the form (a Register button) -->
+                    <div class="input_box button">
+                        <input type="submit" value="Register">
+                    </div>
+                </form>
+                
+                <div class="sign_up">
+                    Already a member?  <a href="../HTML/Login.html">Login now</a>   <!-- A link to the "Login.html" page -->
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+
+
+        
+        <div id="footer">
+            <p style="color:pink;font-size:8pt"> By Elias Paul (M00913057) </p>
+
+        </div>
+
+    </body>
+</html>

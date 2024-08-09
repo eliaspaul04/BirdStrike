@@ -1,0 +1,94 @@
+ /* Styling for the Register Page */
+#Registerpage{
+    background-color: rgb(230, 230, 191);
+    height: 100%;
+}
+
+/* Styling for the Main Container */
+.main_div {
+    width: 365px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;     /* Add rounded corners to the container */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);  /* Apply a box shadow for a subtle 3D effect */
+    position: absolute;     /* Position the container absolutely within its parent */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);      /* Center the container both horizontally and vertically */
+}
+
+/* Styling for the Title */
+.main_div .title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* Styling for the Form */
+form {
+    margin-top: 25px;
+}
+
+/* Styling for Input Fields */
+form .input_box {
+    height: 50px;
+    width: 100%;
+    position: relative;
+    margin-top: 15px;
+}
+
+/* Styling for Input Elements */
+.input_box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: 1px solid light grey;
+    border-radius: 5px;
+    padding-left: 45px;
+    font-size: 17px;
+    transition: all 0.3s ease;      /* Apply a smooth transition effect for all properties over 0.3 seconds */
+}
+
+.input_box input:focus {
+    border-color: #be2edd;
+}
+
+
+/* Styling for the Submit Button */
+.button input {
+    padding-left: 0;
+    background: #be2edd;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;                    /* Change the cursor to a pointer on hover, indicating interactivity */
+    transition: all 0.3s linear;       /* Apply a smooth transition effect for all properties over 0.3 seconds */
+}
+
+/* Styling for Hovered Submit Button */
+.button input:hover {
+    background: #a720c5;
+}
+
+/* Styling for Form Links */
+form a {
+    text-decoration: none;
+}
+
+/* Styling for Hovered Form Links */
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the Footer */
+#footer {
+    text-align: center;
+    background-color: #333;
+    color: pink;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

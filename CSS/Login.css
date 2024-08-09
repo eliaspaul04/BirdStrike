@@ -1,0 +1,95 @@
+#Loginpage{
+    background-color: rgb(230, 230, 191);
+    height: 100%;
+
+}
+
+/* Styling for the main content container with the class "main_div" */
+.main_div {
+    width: 365px;
+    background: #fff;
+    padding: 30px;
+    border-radius: 5px;/* Add rounded corners to the container */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);/* Apply a box shadow for a subtle 3D effect */
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);/* Center the container both horizontally and vertically */
+}
+
+/* Styling for the title within the main content container */
+.main_div .title {
+    text-align: center;     /* Center-align the text within this element */
+    font-size: 30px;
+    font-weight: 600;
+}
+
+form {
+    margin-top: 25px;
+}
+
+/* Styling for input boxes within the form */
+form .input_box {
+    height: 50px;
+    width: 100%;
+    position: relative;     /* Define a relative position for the input boxes */
+    margin-top: 15px;
+}
+
+/* Styling for text input elements */
+.input_box input {
+    height: 100%;
+    width: 100%;
+    outline: none;      /* Remove the default outline on focus */
+    border: 1px solid light grey;
+    border-radius: 5px;
+    padding-left: 15px;
+    font-size: 17px;
+    transition: all 0.3s ease;  
+}
+
+/* Styling for input boxes on focus */
+.input_box input:focus {
+    border-color: #be2edd;
+}
+
+/* Styling for the submit button */
+.button input {
+    padding-left: 15px 0;
+    background: #be2edd;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;      /* Change the cursor to a pointer on hover */
+    transition: all 0.3s linear; 
+}
+
+/* Styling for the submit button on hover */
+.button input:hover {
+    background: #a720c5;
+}
+
+form a {
+    text-decoration: none;
+}
+
+
+
+/* Styling for hyperlinks within the form on hover */   
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Styling for the footer section at the bottom of the page */
+#footer {
+    text-align: center;
+    background-color: #333;
+    color: pink;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+} 
+

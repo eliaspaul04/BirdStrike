@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title> Bird Strike Game </title>
+        <link rel="stylesheet" href="../CSS/Homepage.css">  <!-- Linking the Homepage css file -->
+         <link rel="stylesheet" href="../CSS/Menubar.css">  <!-- Linking the menubar css file -->
+
+    </head>
+
+    <body>
+       
+        <!-- Code for the logo -->
+        <div id="imageLogo">
+            <img src="../Images/Logo.jpg" width="70" height="70" >
+            <div id="Gamename">Bird Strike</div>
+        </div>
+
+<!-- Code for the navigation bar -->
+
+        <div id="navigation">
+
+            <span id = "menuitem"><a href="../HTML/Homepage.html"> Home</a></span>
+            <span id = "menuitem"><a href="../HTML/Play.html"> Play</a></span>
+            <span id = "menuitem"><a href="../HTML/Leaderboard.html"> Leaderboard</a></span> 
+            <span id = "menuitem"><a href="../HTML/Login.html">Login</a></span>
+            <span id = "menuitem"><a href="../HTML/Register.html">Register</a></span>
+            <span id="menuitem"><a href="#" onclick="logout()">Logout</a></span>   
+            
+        
+        </div>
+
+
+<!-- This is the main content for the page which includes the game description and game rules. -->
+
+        <div id="Maincontent">
+            <div class="gameDescription">
+
+                <h1>Game description</h1>
+                <p> Welcome to our thrilling game, in which you must fly a jet over the skies while avoiding a swarm of birds in 
+                    order to survive. You lose a life when you collide with a bird, and the game ends when your life supply runs out.
+                    Earn points for the length of your flight while competing against the clock. For what duration can you endure the avian maze?
+                    In this intense battle, aim for the top spot on the leaderboard!</p>
+
+                <h1> Game Rules </h1>
+
+                <p> <li>Hit "Play" to start; the plane moves automatically.<br></li>
+                    <li>Control the plane with up arrow key to ascend, and the down arrow key to descend.<br></li>
+                    <li>The plane's speed is fixed.<br></li>
+                    <li>Begin with three lives; losing them ends the game.<br></li>
+                    <li>Complete your mission within 20 seconds for victory.</li></p>
+                </div>
+            
+<!-- Code for the background image -->
+
+        <div>
+            <img src="../Images/image_2023-10-09_162832967-transformed.png" >
+        </div>
+    
+<!-- Code for the footer -->
+        <div id="footer">
+            <p style="color:pink;font-size:8pt"> By Elias Paul (M00913057) </p>
+        </div>
+
+
+        <script>
+            function logout() {
+                // Clear user session or local storage
+                sessionStorage.removeItem("loggedinuser");
+                // Redirect to the login page (optional)
+                window.location.href = "../HTML/Login.html";
+            }
+        </script>
+
+    </body>
+
+</html>
